@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ADMINContext.SANPHAM>
+@using System.Text.RegularExpressions
+@helper Truncate(string input, int length)
+{
+if (input.Length < length)
+{
+        @input
+}
+else
+{
+        @input.Substring(0, length)<text>...</text>
+}
+}
+@using Oracle_Project.Models
+@{ 
+    string _action = Html.Action();
+    string _actionSp;
+    if (_action == "Index") { _actionSp = "Xoasp"; }
+    else { _actionSp = "Khoiphucsp"; }
+}
+<script src="~/Content/scripts/jquery-1.9.1.minefbf.js"></script>
+<script src="~/Content/scripts/ajax-cartefbf.js"></script>
+
+<div class="w3-table-all w3-card-4">
+    <ul class="w3-ul w3-card-4">
+        @foreach (var item in Model)
+        {
+            <li class="w3-padding-16">
+                <span onclick="this.parentElement.style.display = 'none'"
+                      class="w3-button w3-white w3-xlarge w3-right" id="@item.URL" >×</span>
+                <a href="~/AdminSanPham/EditSP/@item.MASANPHAM" style="text-decoration: none">
+                    <img src="@System.Configuration.ConfigurationManager.AppSettings["UrlImgeConfig"]@item.ANHSANPHAM" class="w3-left w3-circle w3-margin-right" style="width:50px" alt="@item.TENSANPHAM">
+                    <span class="w3-large">@item.TENSANPHAM</span>
+                    <span class="w3-right w3-large">Giá bán: @item.GIABAN</span>
+                    <br>
+                    <span>@Truncate(Regex.Replace(item.MOTASP, @"<[^>]+>", ""),55)</span>
+                    <span class="w3-right">Giá khuyến mãi: @item.GIAKM</span><br>
+                </a>
+            </li>
+        }
+    </ul>
+
+</div>
+@foreach (var item in Model)
+{
+<script type="text/jscript">
+    $('#@item.URL').click(function () {
+        var url = "/AdminSanPham/@_actionSp/@item.MASANPHAM";
+        var name = $('#Name').val();
+        $.get(url, function (data) {
+            $("#rData").html(data);
+        });
+    })
+</script>
+}

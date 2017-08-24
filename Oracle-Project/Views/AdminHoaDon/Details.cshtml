@@ -1,0 +1,42 @@
+﻿@model ADMINContext.HOADON
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@Html.Action("menuhoadon", "AdminHoaDon")
+
+<div class="w3-container">
+    <h1>Chi tiết hóa đơn @Model.MAHOADON của đơn hàng @Model.MADONDATHANG </h1>
+    <h3>@Model.TRANGTHAIHD.TENTTHD </h3>
+
+    <div class="w3-cell-row">
+
+        <div class="w3-container w3-cell">
+            <div class="w3-panel w3-card-4 w3-light-grey" style="width:100%">
+                <p class=" w3-large w3-serif">
+                    <i class="fa fa-quote-right w3-xxlarge w3-text-red"></i><br>
+                    Ngày xuất HĐ:  @Model.NGAYTAOHD
+                </p>
+                <p> Ngày xuất giao:  @Model.NGAYGIAOHD</p>
+                <p class="w3-large">
+                    <i>"Nhân viên: @Model.NHANVIEN.TENNHANVIEN"</i>
+                </p>
+            </div>
+        </div>
+
+        <div class="w3-container w3-cell">
+            <div class="w3-panel w3-card-4 w3-light-grey" style="width:100%">
+                <p class=" w3-large w3-serif">
+                    <i class="fa fa-quote-right w3-xxlarge w3-text-red"></i><br>
+                    Tên Cty: @Model.TENCONGTY (MST: @Model.MST)
+                </p>
+                <p> Địa chỉ:  @Model.DIACHICONTY</p>
+                <p class="w3-large">
+                    <i>"Chi chú: @Model.GHICHUHD"</i>
+                </p>
+            </div>
+        </div>
+
+    </div>
+@Html.Action("DanhsachItemDH", "AdminDonHang", new { id = Model.MADONDATHANG })
+</div>

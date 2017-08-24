@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ADMINContext.HOADON>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@Html.Action("menuhoadon", "AdminHoaDon")
+<table class="w3-table-all w3-hoverable">
+    <thead>
+        <tr class="w3-light-grey">
+            <th>Mã HD/ Mã ĐĐH</th>
+            <th>Nhân viên</th>
+            <th>Tình trạng</th>
+            <th>Ngày tạo HĐ</th>
+            <th>Ngày giao HĐ</th>
+            <th>Ghi chú</th>
+            <td></td>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.MAHOADON / @item.MADONDATHANG
+            </td>
+            <td>
+               @item.NHANVIEN.TENNHANVIEN
+            </td>
+            <td>
+                @item.TRANGTHAIHD.TENTTHD
+            </td>
+            <td>
+               @item.NGAYTAOHD
+            </td>
+            <td>
+                @item.NGAYGIAOHD
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GHICHUHD)
+            </td>
+           
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+                @Html.ActionLink("Details", "Details", new {  id=item.MAHOADON }) |
+                @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+            </td>
+        </tr>
+    }
+
+</table>

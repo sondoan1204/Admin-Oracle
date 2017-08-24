@@ -1,0 +1,159 @@
+﻿@model ADMINContext.THONGTINWEBSITE
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+    <div class="w3-container w3-brown">
+        <h2>Chỉnh sửa thông tin website</h2>
+    </div>
+    <div class="w3-container">
+        @using (Html.BeginForm(System.Web.Mvc.FormMethod.Post))
+            {
+            @Html.AntiForgeryToken()
+            <p>
+                <label class="w3-text-brown"><b>Logo</b></label>
+                @Html.EditorFor(model => model.LOGO, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+            </p>
+                <p>
+                    <label class="w3-text-brown"><b>Điện thọai</b></label>
+                    @Html.EditorFor(model => model.HOTLINE, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+                <p>
+                    <label class="w3-text-brown"><b>Tên Facebook</b></label>
+                    @Html.EditorFor(model => model.FACEBOOK, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+                <p>
+                    <label class="w3-text-brown"><b>Link Facebook</b></label>
+                    @Html.EditorFor(model => model.LINKFACEBOOK, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+
+                <p>
+                    <label class="w3-text-brown"><b>Thời gian mở cửa</b></label>
+                    @Html.EditorFor(model => model.THOIGIANMOCUA, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+                <p>
+                    <label class="w3-text-brown"><b>Điạ chỉ</b></label>
+                    @Html.EditorFor(model => model.DIACHI, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+                <p>
+                    <label class="w3-text-brown"><b>Email</b></label>
+                    @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+                <p>
+                    <label class="w3-text-brown"><b>Tên WEBSITE</b></label>
+                    @Html.EditorFor(model => model.TENWEBSITE, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+                <p>
+                    <label class="w3-text-brown"><b>Mô tả WEBSITE</b></label>
+                    @Html.EditorFor(model => model.MOTATRANGWEB, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+                <p>
+                    <button class="w3-btn w3-brown" type="submit">Cập nhật</button>
+                </p>
+
+        }
+    </div>
+</div>
+
+
+
+@*@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>THONGTINWEBSITE</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.MATHONGTIN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MATHONGTIN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MATHONGTIN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LOGO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.LOGO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HOTLINE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(model => model.HOTLINE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FACEBOOK, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FACEBOOK, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FACEBOOK, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LINKFACEBOOK, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LINKFACEBOOK, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LINKFACEBOOK, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.THOIGIANMOCUA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.THOIGIANMOCUA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.THOIGIANMOCUA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DIACHI, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DIACHI, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DIACHI, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EMAIL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EMAIL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TENWEBSITE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TENWEBSITE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TENWEBSITE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MOTATRANGWEB, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MOTATRANGWEB, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MOTATRANGWEB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

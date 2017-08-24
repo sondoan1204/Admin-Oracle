@@ -1,0 +1,47 @@
+﻿@model ADMINContext.HOADON
+
+@{
+    ViewBag.Title = "XuatHoaDon";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@Html.Action("menudonhang", "AdminDonHang")
+<div class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+        <div class="w3-container w3-brown">
+            <h2>Xuất hóa đơn</h2>
+        </div>
+    @{ 
+        string tam = Request.QueryString["iddh"];
+    }
+        <div class="w3-container">
+            @using (Html.BeginForm(System.Web.Mvc.FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("ma",tam)
+                <p>
+                    <label class="w3-text-brown"><b>Ngày giao</b></label>
+                    @Html.EditorFor(model => model.NGAYGIAOHD, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand",@type= "date" } })
+                </p>
+                <p>
+                    <label class="w3-text-brown"><b>MST</b></label>
+                    @Html.EditorFor(model => model.MST, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+                <p>
+                    <label class="w3-text-brown"><b>Tên Công ty</b></label>
+                    @Html.EditorFor(model => model.TENCONGTY, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+                <p>
+                    <label class="w3-text-brown"><b>Địa chỉ Cty</b></label>
+                    @Html.EditorFor(model => model.DIACHICONTY, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+
+                <p>
+                    <label class="w3-text-brown"><b>Ghi chú</b></label>
+                    @Html.EditorFor(model => model.GHICHUHD, new { htmlAttributes = new { @class = "w3-input w3-border w3-sand" } })
+                </p>
+                <p>
+                    <button class="w3-btn w3-brown" type="submit">Xuất hóa đơn</button>
+                </p>
+
+            }
+        </div>
+    </div>

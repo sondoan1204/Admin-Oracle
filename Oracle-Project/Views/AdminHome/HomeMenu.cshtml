@@ -1,0 +1,57 @@
+﻿<a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+@using Oracle_Project.Models
+@{
+    var currentController = Html.Controller();
+    string active = "w3-bar-item w3-button w3-padding w3-blue";
+}
+
+
+@if (currentController == "AdminHome")
+{
+     @Html.ActionLink("Tổng quan", "Index", "AdminHome", null, new { @class = active })
+}
+else
+{
+     @Html.ActionLink("Tổng quan", "Index", "AdminHome", null, new { @class = "w3-bar-item w3-button w3-padding" })
+}
+@if (currentController == "AdminSanPham")
+{
+    @Html.ActionLink("Sản phẩm", "Index", "AdminSanPham", null, new { @class = active })
+}
+else
+{
+   @Html.ActionLink("Sản phẩm", "Index", "AdminSanPham", null, new { @class = "w3-bar-item w3-button w3-padding" })
+}
+@if (currentController == "AdminDonHang")
+{
+    @Html.ActionLink("Đơn hàng", "Index", "AdminDonHang", null, new { @class = active })
+}
+else
+{
+    @Html.ActionLink("Đơn hàng", "Index", "AdminDonHang", null, new { @class = "w3-bar-item w3-button w3-padding" })
+}
+@if (currentController == "AdminHoaDon")
+{
+    @Html.ActionLink("Hóa đơn", "Index", "AdminHoaDon", null, new { @class = active })
+}
+else
+{
+    @Html.ActionLink("Hóa đơn", "Index", "AdminHoaDon", null, new { @class = "w3-bar-item w3-button w3-padding" })
+}
+@if (currentController == "AdminThongTinWeb")
+{
+    @Html.ActionLink("Thông tin web", "Edit", "AdminThongTinWeb", null, new { @class = active })
+}
+else
+{
+    @Html.ActionLink("Thông tin web", "Edit", "AdminThongTinWeb", null, new { @class = "w3-bar-item w3-button w3-padding" })
+}
+@*<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Overview</a>
+<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
+<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
+<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
+<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
+<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
+<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
+<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
+<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>*@

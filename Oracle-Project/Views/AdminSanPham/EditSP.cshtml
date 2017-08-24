@@ -1,0 +1,321 @@
+﻿@model ADMINContext.SANPHAM
+
+@{
+    ViewBag.Title = "EditSP";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<head>
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/dropzone/dropzone.js"></script>
+    <link href="~/Scripts/dropzone/dropzone.css" rel="stylesheet" />
+</head>
+@Html.Action("menudanhsach", "AdminSanPham")
+
+<div class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+    <h2 class="w3-center">Sửa thông tin sản phẩm</h2>
+    @if (@ViewData["Loi1"] != null || @ViewData["Loi2"] != null || @ViewData["Loi3"] != null)
+    {
+        <div class="w3-container w3-red">
+            <h3>@ViewData["Loi1"]</h3>
+            <h3>@ViewData["Loi2"]</h3>
+            <h3>@ViewData["Loi3"]</h3>
+        </div>
+    }
+
+    <div class="w3-row w3-section">
+        <div class="w3-row-padding">
+            <div class="w3-half">
+                <div class="w3-row w3-section">
+                    <form action="~/AdminSanPham/SaveUploadedFile" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
+                        <div class="fallback">
+                            <input name="file" type="file" multiple />
+                            <input type="submit" value="Upload" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="w3-half">
+               <img src="@System.Configuration.ConfigurationManager.AppSettings["UrlImgeConfig"]@Model.ANHSANPHAM" class="w3-opacity w3-hover-opacity-off" style="width:180px"/>
+
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("EditSP","AdminSanPham",System.Web.Mvc.FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="w3-row w3-section">
+            @*<div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>*@
+            <div class="w3-rest">
+                @Html.EditorFor(model => model.TENSANPHAM, new { htmlAttributes = new { @class = "w3-input w3-border", @placeholder = "Nhập tên sản phẩm", @required = "required" } })
+            </div>
+        </div>
+        <div class="w3-row w3-section">
+            <div class="w3-rest">
+                @Html.DropDownList("Loai", null, null, new { @class = "w3-input w3-border text-box single-line" })
+            </div>
+        </div>
+
+
+
+        <div class="w3-row w3-section">
+            <div class="w3-row-padding">
+                <div class="w3-half">
+                    <label>Giá bán</label>
+                    @Html.EditorFor(model => model.GIABAN, new { htmlAttributes = new { @class = "w3-input w3-border", @placeholder = "100.000.00 đ", @type = "number", @required = "required" } })
+
+                </div>
+                <div class="w3-half">
+                    <label>Giá khuyến mãi</label>
+                    @Html.EditorFor(model => model.GIAKM, new { htmlAttributes = new { @class = "w3-input w3-border", @placeholder = "50.000.00 đ", @type = "number", @required = "required" } })
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.MOTASP, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                <script>
+                    // Replace the <textarea id="editor1"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace('MOTASP', {
+                        htmlEncodeOutput: false,
+                        entities: false,
+                        entities_latin: false,
+                        entities_greek: false
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.ANHSANPHAM)
+            </div>
+        </div>
+
+        <div class="w3-row-padding">
+            <div class="w3-third">
+                @if (Model.TRANGTHAIBAN == "Y")
+                {
+                    @Html.CheckBox("_TRANGTHAIKM", new { @class = "w3-check", @checked= "checked" })
+                }
+                else
+                {
+                    @Html.CheckBox("_TRANGTHAIKM", new { @class = "w3-check"})
+                }
+
+                <label>Khuyến mãi</label>
+            </div>
+            <div class="w3-third">
+                @if (Model.TRANGTHAIHOT == "Y")
+                {
+                    @Html.CheckBox("_TRANGTHAIHOT", new { @class = "w3-check", @checked = "checked" })
+                }
+                else
+                {
+                    @Html.CheckBox("_TRANGTHAIHOT", new { @class = "w3-check" })
+                }
+                <label>Sản phẩm nổi bật</label>
+            </div>
+            <div class="w3-third">
+                @if (Model.TRANGTHAITOPWEEK == "Y")
+                {
+                    @Html.CheckBox("_TRANGTHAITOPWEEK", new { @class = "w3-check", @checked = "checked" })
+                }
+                else
+                {
+                    @Html.CheckBox("_TRANGTHAITOPWEEK", new { @class = "w3-check" })
+                }
+                <label>Mua nhiều trong tuần</label>
+            </div>
+        </div>
+
+        <div class="w3-row-padding">
+            <div class="w3-third">
+                @if (Model.TRANGTHAIBAN == "Y")
+                {
+                    @Html.CheckBox("_TRANGTHAIBAN", new { @class = "w3-check", @checked = "checked" })
+                }
+                else
+                {
+                    @Html.CheckBox("_TRANGTHAIBAN", new { @class = "w3-check" })
+                }
+                <label>Đang bán</label>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cập nhật" class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding" />
+            </div>
+        </div>
+    }
+
+
+
+    <script type="text/javascript">
+
+        //File Upload response from the server
+        Dropzone.options.dropzoneForm = {
+            maxFiles: 2,
+            init: function () {
+                this.on("maxfilesexceeded", function (data) {
+                    var res = eval('(' + data.xhr.responseText + ')');
+                });
+                this.on("complete", function (data) {
+                    var res = JSON.parse(data.xhr.responseText);
+                    document.getElementById("ANHSANPHAM").setAttribute('value', res.Message);
+                });
+                this.on("addedfile", function (file) {
+
+                    // Create the remove button
+                    var removeButton = Dropzone.createElement("<button>Remove file</button>");
+
+                    // Capture the Dropzone instance as closure.
+                    var _this = this;
+
+                    // Listen to the click event
+                    removeButton.addEventListener("click", function (e) {
+                        // Make sure the button click doesn't submit the form:
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Remove the file preview.
+                        _this.removeFile(file);
+                        // If you want to the delete the file on the server as well,
+                        // you can do the AJAX request here.
+                    });
+
+                    // Add the button to the file preview element.
+                    file.previewElement.appendChild(removeButton);
+                });
+            }
+        };
+    </script>
+
+</div>
+
+
+
+@*@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>SANPHAM</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.MASANPHAM, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MASANPHAM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MASANPHAM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MALOAISP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MALOAISP, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MALOAISP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TENSANPHAM, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TENSANPHAM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TENSANPHAM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GIABAN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GIABAN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GIABAN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GIAKM, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GIAKM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GIAKM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MOTASP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MOTASP, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MOTASP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ANHSANPHAM, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ANHSANPHAM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ANHSANPHAM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TRANGTHAIKM, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TRANGTHAIKM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TRANGTHAIKM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TRANGTHAIHOT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TRANGTHAIHOT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TRANGTHAIHOT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TRANGTHAITOPWEEK, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TRANGTHAITOPWEEK, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TRANGTHAITOPWEEK, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NGAYTAOSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NGAYTAOSP, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NGAYTAOSP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.URL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.URL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.URL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TRANGTHAIBAN, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TRANGTHAIBAN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TRANGTHAIBAN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}*@

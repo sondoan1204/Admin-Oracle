@@ -1,0 +1,29 @@
+﻿
+<div class="w3-bar w3-dark-gray">
+    @Html.ActionLink("Danh sách đơn hàng", "Index", "AdminDonHang", null, new { @class = "w3-bar-item w3-button" })
+    @Html.ActionLink("Đơn hàng cần duyệt", "DSdonhangtheonhanvien", "AdminDonHang", null, new { @class = "w3-bar-item w3-button" })
+    <a href="#" onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button" style="margin-left: 56%">Tìm kiếm</a>
+</div>
+
+<div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-left w3-card-4">
+        <header class="w3-container w3-teal">
+            <span onclick="document.getElementById('id01').style.display='none'"
+                  class="w3-button w3-display-topright">&times;</span>
+            <h2>Tìm kiếm hóa đơn</h2>
+        </header>
+        <div class="w3-container">
+            <form class="w3-container w3-card-4" action="/AdminDonHang/TimKiemDDH/">
+                <p>
+                    <input class="w3-input w3-border" name="id" type="text" placeholder="Nhập mã hóa đơn">
+                </p>
+                <p>
+                    <button class="w3-btn w3-blue">Tìm</button>
+                </p>
+            </form>
+        </div>
+        <footer class="w3-container w3-teal">
+            <p>Modal Footer</p>
+        </footer>
+    </div>
+</div>

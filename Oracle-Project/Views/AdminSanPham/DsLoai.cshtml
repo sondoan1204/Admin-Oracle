@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ADMINContext.LOAISP>
+@using Oracle_Project.Models
+@{ 
+    string action=Html.Action();
+    string actionLoai;
+    if (action == "Index")
+    {
+        actionLoai = "DsSPTheoLoai";
+    }else
+    {
+        actionLoai = "DsSPTheoLoaiKB";
+    }
+}
+<div class="w3-sidebar w3-bar-block w3-gray w3-card-2" style="width:130px">
+    <h5 class="w3-bar-item">Danh mục</h5>
+    @foreach (var item in Model)
+    {
+        <button class="w3-bar-item w3-button tablink" onclick="openLink(event, @item.MALOAISP )">@Html.DisplayFor(modelItem => item.TENLOAI)</button>
+    }
+</div>
+
+
+<div style="margin-left:130px">
+@foreach (var item in Model)
+{
+    <div id="@item.MALOAISP" class="w3-container city w3-animate-left" style="display:none">
+        <h2>@Html.ActionLink(@item.TENLOAI, "Edit", "AdminSanpham", new { id = @item.MALOAISP }, new { @class = "w3-button w3-circle w3-teal" })</h2>
+        @Html.Action(actionLoai, "AdminSanPham", new { id = @item.MALOAISP})
+    </div>
+}
+</div>
+
+<script>
+function openLink(evt, animName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+  }
+  document.getElementById(animName).style.display = "block";
+  evt.currentTarget.className += " w3-red";
+}
+</script>

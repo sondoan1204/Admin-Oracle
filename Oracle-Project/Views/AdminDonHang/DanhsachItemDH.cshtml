@@ -1,0 +1,22 @@
+﻿@model IEnumerable<ADMINContext.CHITIETDDH>
+@using System.Globalization
+<table class="w3-table-all w3-card-4">
+    <tr>
+        <th>Sản phẩm</th>
+        <th>Số lượng</th>
+        <th>Giá khách mua</th>
+        <th>Thành tiền</th>
+    </tr>
+@foreach (var item in Model)
+{
+    var GM = (decimal)item.GIAKHMUA;
+    var TT = (decimal)item.THANHTIEN;
+    CultureInfo ci = new CultureInfo("vi-VN");
+    <tr>
+        <td><img src="@System.Configuration.ConfigurationManager.AppSettings["UrlImgeConfig"]@item.SANPHAM.ANHSANPHAM" class="w3-left w3-circle w3-margin-right" style="width:50px">@item.SANPHAM.TENSANPHAM</td>
+        <td>@item.SOLUONG</td>
+        <td>@GM.ToString("C", ci)</td>
+        <td>@TT.ToString("C", ci)</td>
+    </tr>
+}
+</table>

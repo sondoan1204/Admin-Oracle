@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@Html.Action("menudanhsach", "AdminSanPham")
+<div class="w3-card-4" style="margin-left:130px;margin-top:20px;margin-right:130px">
+    <div class="w3-container w3-card-4" >
+        <h2 class="w3-text-blue">Thêm loại sản phẩm (Danh mục)</h2>
+        @using (Html.BeginForm("ThemLoai", "AdminSanPham", System.Web.Mvc.FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+            <p>
+                <label class="w3-text-blue"><b>Tên loại</b></label>
+                <input class="w3-input w3-border w3-light-grey" type="text" name="tenloai">
+            </p>
+            if (@ViewData["Loi1"] != null || @ViewData["Loi2"] != null)
+            {
+                <div class="w3-container w3-red">
+                    <h3>@ViewData["Loi1"]</h3>
+                    <h3>@ViewData["Loi2"]</h3>
+                </div>
+            }
+
+            <p>
+                <button class="w3-btn w3-blue-grey">Thêm</button>
+            </p>
+        }
+    </div>
+</div>
+

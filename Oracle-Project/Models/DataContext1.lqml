@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Database Name="ADMIN" EntityNamespace="ADMINContext" ContextNamespace="ADMINContext" Class="ADMINDataContext" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" ed:Guid="ca04bebd-b804-4ae5-bb6a-f8aa135a5106" Provider="Devart.Data.Oracle.Linq.Provider.OracleDataProvider, Devart.Data.Oracle.Linq" Extended="true" xmlns="http://schemas.devart.com/linqconnect/mapping">
+  <Connection Mode="ConnectionString" ConnectionString="User Id=admin;Password=admin;Server=localhost;Direct=True;Sid=ORA;Persist Security Info=True" Provider="Devart.Data.Oracle" />
+  <Table Name="ADMIN.CHITIETDDH" Member="CHITIETDDHs">
+    <Type Name="CHITIETDDH" Id="ID1" ed:Guid="448a61f7-c04e-4145-86c1-b73445bb353b">
+      <Column Name="MA_SANPHAM" Member="MASANPHAM" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="a6e00a4e-b439-4954-83c1-46da0eaa3a3e" />
+      <Column Name="MA_DONDATHANG" Member="MADONDATHANG" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="48a212ed-92fd-48d2-b6df-1d829be2d7fa" />
+      <Column Name="SOLUONG" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="790bfcb2-f605-40bb-b2f8-3806e1abc5b0" />
+      <Column Name="THANHTIEN" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="c8e63b12-5292-4281-8b39-3e864eeb03fd" />
+      <Column Name="GIAKHMUA" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="422aa2de-f716-4fac-825b-209137baf26a" />
+      <Association Name="DONDATHANG_CHITIETDDH" ed:AssociationGuid="d03da91c-788f-4fe2-ae24-e2f7b9ed6bdb" Member="DONDATHANG" ed:Guid="7f8b061a-f1cc-46ab-b2e8-e8de4c29cec2" ThisKey="MADONDATHANG" OtherKey="MADONDATHANG" Type="DONDATHANG" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="SANPHAM_CHITIETDDH" ed:AssociationGuid="0af00b68-280a-434d-95e0-cc54fd2bc136" Member="SANPHAM" ed:Guid="486be307-da71-45f0-a750-d21fab08da6e" ThisKey="MASANPHAM" OtherKey="MASANPHAM" Type="SANPHAM" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="ADMIN.DONDATHANG" Member="DONDATHANGs">
+    <Type Name="DONDATHANG" Id="ID2" ed:Guid="c45b9d44-7fd3-43ef-81c4-942f5dc0d642">
+      <Column Name="MA_DONDATHANG" Member="MADONDATHANG" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="ba57bd10-2ea9-4f49-96a0-bc6dc9335fdc" />
+      <Column Name="MA_NHANVIEN" Member="MANHANVIEN" Type="System.Decimal" DbType="NUMBER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="5ce12b71-a4e2-48c2-87e7-36fcf339d989" />
+      <Column Name="MA_KHACHHANG" Member="MAKHACHHANG" Type="System.Decimal" DbType="NUMBER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="77c23ba8-6998-4719-a407-a48874eee3dc" />
+      <Column Name="MA_TTDDH" Member="MATTDDH" Type="System.Decimal" DbType="NUMBER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="75664460-7d8a-449d-b2b1-f98c2ec49c9b" />
+      <Column Name="HTGIAOHANG" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="c5b544b3-3c66-489d-a731-bb0a40e388f4" />
+      <Column Name="TONGTG" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="3e74ad6e-8528-405a-98d2-b04ddb5ad077" />
+      <Column Name="NGAYTAODDH" Type="System.DateTime" DbType="DATE NULL" CanBeNull="true" UpdateCheck="Never" Precision="0" ed:ValidateRequired="false" ed:Guid="91e90f03-3c6f-4b56-858b-eabb02455579" />
+      <Column Name="TENNGUOINHAN" Type="System.String" DbType="NVARCHAR2(250) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="250" Unicode="true" ed:ValidateMaxLength="250" ed:ValidateRequired="false" ed:Guid="704d7b3a-08de-42a9-a943-e37bfbf32e53" />
+      <Column Name="DIACHINGUOINHAN" Type="System.String" DbType="NVARCHAR2(250) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="250" Unicode="true" ed:ValidateMaxLength="250" ed:ValidateRequired="false" ed:Guid="ebcffb17-e4ed-4442-990a-e44795ed9714" />
+      <Column Name="SDTNGUOINHAN" Type="System.String" DbType="VARCHAR2(11 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="11" ed:ValidateMaxLength="11" ed:ValidateRequired="false" ed:Guid="68cbd366-57cc-4060-bbb8-d7ec61529a85" />
+      <Column Name="GHICHU" Type="System.String" DbType="NVARCHAR2(250) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="250" Unicode="true" ed:ValidateMaxLength="250" ed:ValidateRequired="false" ed:Guid="efdc16b6-3b17-4d95-9db2-028d750d65c9" />
+      <Association Name="DONDATHANG_CHITIETDDH" ed:AssociationGuid="d03da91c-788f-4fe2-ae24-e2f7b9ed6bdb" Member="CHITIETDDHs" ed:Guid="4b65dbc4-6cf6-478d-a229-7b1b683b9551" ThisKey="MADONDATHANG" OtherKey="MADONDATHANG" Type="CHITIETDDH" />
+      <Association Name="KHACHHANG_DONDATHANG" ed:AssociationGuid="95b50853-f4de-4934-98c8-baa5b993f326" Member="KHACHHANG" ed:Guid="488c7552-50c4-4f56-b93e-bff47ec5c1bc" ThisKey="MAKHACHHANG" OtherKey="MAKHACHHANG" Type="KHACHHANG" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="NHANVIEN_DONDATHANG" ed:AssociationGuid="a9fdf7ec-e3ef-487f-9427-3c2e9891ceef" Member="NHANVIEN" ed:Guid="3b78c9b5-6c86-407b-bfe2-8000c58f7e29" ThisKey="MANHANVIEN" OtherKey="MANHANVIEN" Type="NHANVIEN" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="TRANGTHAIDDH_DONDATHANG" ed:AssociationGuid="6af21b62-7881-49da-92b6-e78d6de1c6d3" Member="TRANGTHAIDDH" ed:Guid="538d6b36-9e3d-4e88-a68b-145b23a2293d" ThisKey="MATTDDH" OtherKey="MATTDDH" Type="TRANGTHAIDDH" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="DONDATHANG_HOADON" ed:AssociationGuid="4a4b8b5a-257d-49cd-a5ff-eac8aea5e825" Member="HOADONs" ed:Guid="d801ef01-4a9a-4d7a-b7c7-c29a40a09507" ThisKey="MADONDATHANG" OtherKey="MADONDATHANG" Type="HOADON" />
+    </Type>
+  </Table>
+  <Table Name="ADMIN.HOADON" Member="HOADONs">
+    <Type Name="HOADON" Id="ID3" ed:Guid="f49fde43-f4c7-462f-8672-7475dbacd75b">
+      <Column Name="MA_HOADON" Member="MAHOADON" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="423be44e-d664-4499-9555-a0a19572d783" />
+      <Column Name="MA_DONDATHANG" Member="MADONDATHANG" Type="System.Decimal" DbType="NUMBER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="ab7e943b-7507-46a9-b9cd-f20caa716f9e" />
+      <Column Name="MA_NHANVIEN" Member="MANHANVIEN" Type="System.Decimal" DbType="NUMBER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="0534e23f-0e13-4c7f-8993-c290532a2ff4" />
+      <Column Name="MA_TTHD" Member="MATTHD" Type="System.Decimal" DbType="NUMBER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="6e963175-f845-4c51-a7c0-a354b81d44f6" />
+      <Column Name="NGAYTAOHD" Type="System.DateTime" DbType="DATE NULL" CanBeNull="true" UpdateCheck="Never" Precision="0" ed:ValidateRequired="false" ed:Guid="048c27ab-7354-4c76-aff7-8fca5073fb4f" />
+      <Column Name="NGAYGIAOHD" Type="System.DateTime" DbType="DATE NULL" CanBeNull="true" UpdateCheck="Never" Precision="0" ed:ValidateRequired="false" ed:Guid="6c411469-c9f6-4c94-9d91-a2deeba7de29" />
+      <Column Name="GHICHUHD" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="164d797c-a3c6-4484-9490-6c85018999c5" />
+      <Column Name="MST" Type="System.String" DbType="VARCHAR2(10 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="10" ed:ValidateMaxLength="10" ed:ValidateRequired="false" ed:Guid="d1b065bf-e19f-41fe-9f89-9bf387c30275" />
+      <Column Name="TENCONGTY" Type="System.String" DbType="NVARCHAR2(250) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="250" Unicode="true" ed:ValidateMaxLength="250" ed:ValidateRequired="false" ed:Guid="4921cd0c-288b-45bb-8ce1-c64862e5a81e" />
+      <Column Name="DIACHICONTY" Type="System.String" DbType="NVARCHAR2(250) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="250" Unicode="true" ed:ValidateMaxLength="250" ed:ValidateRequired="false" ed:Guid="6ddf9ff9-8c7d-41de-ac2f-8e8aeb8c67c5" />
+      <Association Name="DONDATHANG_HOADON" ed:AssociationGuid="4a4b8b5a-257d-49cd-a5ff-eac8aea5e825" Member="DONDATHANG" ed:Guid="128d7d8d-6bc9-49ca-900d-1d4da4d5c04c" ThisKey="MADONDATHANG" OtherKey="MADONDATHANG" Type="DONDATHANG" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="NHANVIEN_HOADON" ed:AssociationGuid="06392a75-1ccd-4a08-a5cc-08cff4ce93a0" Member="NHANVIEN" ed:Guid="2e3971ca-5abc-4d05-ba6f-f9acd0708eb6" ThisKey="MANHANVIEN" OtherKey="MANHANVIEN" Type="NHANVIEN" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="TRANGTHAIHD_HOADON" ed:AssociationGuid="c0a1dcee-0cb6-4546-920f-b54f4914acd6" Member="TRANGTHAIHD" ed:Guid="1e0da505-54b3-4c99-bbcc-31c3b48baed1" ThisKey="MATTHD" OtherKey="MATTHD" Type="TRANGTHAIHD" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="ADMIN.KHACHHANG" Member="KHACHHANGs">
+    <Type Name="KHACHHANG" ed:Guid="eadb0b12-eea8-4c6c-b37e-744043aec2ef">
+      <Column Name="MA_KHACHHANG" Member="MAKHACHHANG" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="90256358-c436-42d7-9b25-60b1cd019e8e" />
+      <Column Name="TENKHACHHANG" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="75ef1c70-b634-4cd8-b490-e85101705c11" />
+      <Column Name="TENDANGNHAPKH" Type="System.String" DbType="VARCHAR2(100 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="806d4fe6-13ba-40fa-a5b8-0e5af35531ab" />
+      <Column Name="MATKHAUKH" Type="System.String" DbType="VARCHAR2(100 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="da398672-06cf-4716-bcb5-71441d0fc562" />
+      <Column Name="DIENTHOAI" Type="System.String" DbType="VARCHAR2(11 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="11" ed:ValidateMaxLength="11" ed:ValidateRequired="false" ed:Guid="dc3485e0-5557-45f7-9f09-de9f3fbdb3ea" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="eccf171b-4d9d-4c1f-82c3-05d486aceb36" />
+      <Column Name="EMAIL" Type="System.String" DbType="VARCHAR2(100 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="db9bd914-73bc-4865-9df4-290e5f1ba451" />
+      <Column Name="GIOITINHKH" Type="System.String" DbType="CHAR(1) NULL" CanBeNull="true" UpdateCheck="Never" FixedLength="true" MaxLength="1" ed:ValidateMaxLength="1" ed:ValidateRequired="false" ed:Guid="c1bbc639-8d42-4cb3-a020-f55b61c74b46" />
+      <Column Name="NGAYSINHKH" Type="System.DateTime" DbType="DATE NULL" CanBeNull="true" UpdateCheck="Never" Precision="0" ed:ValidateRequired="false" ed:Guid="2a03ed5b-4339-4453-836f-c63226ceee3a" />
+      <Association Name="KHACHHANG_DONDATHANG" ed:AssociationGuid="95b50853-f4de-4934-98c8-baa5b993f326" Member="DONDATHANGs" ed:Guid="8ee7a3a1-da7f-4425-95e4-d4ed0a0e070f" ThisKey="MAKHACHHANG" OtherKey="MAKHACHHANG" Type="DONDATHANG" />
+    </Type>
+  </Table>
+  <Table Name="ADMIN.LOAISP" Member="LOAISPs">
+    <Type Name="LOAISP" ed:Guid="303f9b6f-34f0-4f85-82b0-4c5a337c5c4a">
+      <Column Name="MA_LOAISP" Member="MALOAISP" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="fec96072-aff6-4723-9bae-76c6ee4f6d1a" />
+      <Column Name="TENLOAI" Type="System.String" DbType="NVARCHAR2(20) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="20" Unicode="true" ed:ValidateMaxLength="20" ed:ValidateRequired="false" ed:Guid="463761dd-91a0-4b28-91eb-61b8a4bad48e" />
+      <Column Name="URL" Type="System.String" DbType="VARCHAR2(100 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="8df7e510-c318-434b-a585-67dad6d6ba3e" />
+      <Association Name="LOAISP_SANPHAM" ed:AssociationGuid="42661e6d-aeb6-4344-9f03-b9a19617fac2" Member="SANPHAMs" ed:Guid="2a2e98df-99db-4a16-95d1-87761bc7791f" ThisKey="MALOAISP" OtherKey="MALOAISP" Type="SANPHAM" />
+    </Type>
+  </Table>
+  <Table Name="ADMIN.NHANVIEN" Member="NHANVIENs">
+    <Type Name="NHANVIEN" Id="ID4" ed:Guid="d09774e8-4578-4e6f-a3af-36055743da48">
+      <Column Name="MA_NHANVIEN" Member="MANHANVIEN" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="376d70eb-9e3e-4072-81aa-226ec9a5cb6f" />
+      <Column Name="MA_QUYEN" Member="MAQUYEN" Type="System.Decimal" DbType="NUMBER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="d3d6f8a4-e4ca-4469-aa0e-8682f15bf868" />
+      <Column Name="TENDANGNHAPNV" Type="System.String" DbType="VARCHAR2(30 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="30" ed:ValidateMaxLength="30" ed:ValidateRequired="false" ed:Guid="974ad20c-f2a2-4b48-a1c2-9bfa324c2aae" />
+      <Column Name="MATKHAUNV" Type="System.String" DbType="VARCHAR2(30 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="30" ed:ValidateMaxLength="30" ed:ValidateRequired="false" ed:Guid="a778e846-6206-4402-81da-f7898a8ed560" />
+      <Column Name="ANHDAIDIEN" Type="System.String" DbType="VARCHAR2(30 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="30" ed:ValidateMaxLength="30" ed:ValidateRequired="false" ed:Guid="41c13b61-835b-423e-9d21-eff33d1f29b4" />
+      <Column Name="EMAIL" Type="System.String" DbType="VARCHAR2(30 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="30" ed:ValidateMaxLength="30" ed:ValidateRequired="false" ed:Guid="ac08464c-82ad-4e32-985a-19e2e6544c8a" />
+      <Column Name="TENNHANVIEN" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="b68ee505-c0ad-4f26-bf28-4e1816977e08" />
+      <Column Name="NGAYSINH" Type="System.DateTime" DbType="DATE NULL" CanBeNull="true" UpdateCheck="Never" Precision="0" ed:ValidateRequired="false" ed:Guid="3b8bc8f0-1276-47a4-a968-dca630801400" />
+      <Column Name="PHAI" Type="System.String" DbType="CHAR(1) NULL" CanBeNull="true" UpdateCheck="Never" FixedLength="true" MaxLength="1" ed:ValidateMaxLength="1" ed:ValidateRequired="false" ed:Guid="8765633c-0d1c-4e20-a248-ce11fcaf0d57" />
+      <Association Name="NHANVIEN_DONDATHANG" ed:AssociationGuid="a9fdf7ec-e3ef-487f-9427-3c2e9891ceef" Member="DONDATHANGs" ed:Guid="dc9dc20e-0de8-4fd3-9f65-ec2c3a6dacee" ThisKey="MANHANVIEN" OtherKey="MANHANVIEN" Type="DONDATHANG" />
+      <Association Name="NHANVIEN_HOADON" ed:AssociationGuid="06392a75-1ccd-4a08-a5cc-08cff4ce93a0" Member="HOADONs" ed:Guid="8ffbcc0a-5f98-4647-ab5c-41967b08eebd" ThisKey="MANHANVIEN" OtherKey="MANHANVIEN" Type="HOADON" />
+      <Association Name="QUYEN_NHANVIEN" ed:AssociationGuid="854fb7c4-a6b3-409d-95b6-151a6a39a47c" Member="QUYEN" ed:Guid="27b483ff-a124-41d4-b712-2daef7895575" ThisKey="MAQUYEN" OtherKey="MAQUYEN" Type="QUYEN" DeleteRule="NO ACTION" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="ADMIN.QUYEN" Member="QUYENs">
+    <Type Name="QUYEN" ed:Guid="0b9c5a92-29f0-447d-9372-8558a705f23a">
+      <Column Name="MA_QUYEN" Member="MAQUYEN" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="63a0a38d-98fa-4f78-9798-aff90f5199ad" />
+      <Column Name="TENQUYEN" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="07982d3b-dd5a-417a-97e1-ce0388ec6a33" />
+      <Association Name="QUYEN_NHANVIEN" ed:AssociationGuid="854fb7c4-a6b3-409d-95b6-151a6a39a47c" Member="NHANVIENs" ed:Guid="20c5ba72-9c35-46ab-8905-7405daded0af" ThisKey="MAQUYEN" OtherKey="MAQUYEN" Type="NHANVIEN" />
+    </Type>
+  </Table>
+  <Table Name="ADMIN.SANPHAM" Member="SANPHAMs">
+    <Type Name="SANPHAM" Id="ID5" ed:Guid="15dd34b5-4e04-4eec-b938-df192adce9df">
+      <Column Name="MA_SANPHAM" Member="MASANPHAM" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="adbdd150-29ae-4134-9293-08ad90c1e1e7" />
+      <Column Name="MA_LOAISP" Member="MALOAISP" Type="System.Decimal" DbType="NUMBER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="831a798c-0d25-4a9a-b0ca-ab48ee870e75" />
+      <Column Name="TENSANPHAM" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="e5b7eb62-7fc4-4b28-8240-cfe685b825cf" />
+      <Column Name="GIABAN" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="970f2701-b467-44fb-8d12-e3e1e1e58c5a" />
+      <Column Name="GIAKM" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="ca710b1f-36a2-4a21-9685-04075a1bbcfe" />
+      <Column Name="MOTASP" Type="System.String" DbType="NCLOB NULL" CanBeNull="true" UpdateCheck="Never" Unicode="true" ed:ValidateRequired="false" ed:Guid="9ec828fc-4428-493e-9304-d166aa978596" />
+      <Column Name="ANHSANPHAM" Type="System.String" DbType="VARCHAR2(100 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="fd74e410-1326-4075-bfa3-6126f1e31b73" />
+      <Column Name="TRANGTHAIKM" Type="System.String" DbType="VARCHAR2(1 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="1" ed:ValidateMaxLength="1" ed:ValidateRequired="false" ed:Guid="8ee732c9-8b06-46d3-ad04-06fac02916cd" />
+      <Column Name="TRANGTHAIHOT" Type="System.String" DbType="VARCHAR2(1 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="1" ed:ValidateMaxLength="1" ed:ValidateRequired="false" ed:Guid="2d205c3e-f3ca-4ce7-bc46-a9dba76e1ade" />
+      <Column Name="TRANGTHAITOPWEEK" Type="System.String" DbType="VARCHAR2(1 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="1" ed:ValidateMaxLength="1" ed:ValidateRequired="false" ed:Guid="59b5d1cc-4d31-4414-bd22-781f7eb30002" />
+      <Column Name="NGAYTAOSP" Type="System.DateTime" DbType="DATE NULL" CanBeNull="true" UpdateCheck="Never" Precision="0" ed:ValidateRequired="false" ed:Guid="04131f77-39fe-47d5-b8e3-55e813b4efab" />
+      <Column Name="URL" Type="System.String" DbType="VARCHAR2(100 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="778dd93e-dfc1-4806-ab4d-24164696c3ca" />
+      <Column Name="TRANGTHAIBAN" Type="System.String" DbType="VARCHAR2(1 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="1" ed:ValidateMaxLength="1" ed:ValidateRequired="false" ed:Guid="ec17f905-5408-4dda-95bd-0332d1e9963b" />
+      <Association Name="SANPHAM_CHITIETDDH" ed:AssociationGuid="0af00b68-280a-434d-95e0-cc54fd2bc136" Member="CHITIETDDHs" ed:Guid="3ae9c5db-b6b5-4c66-8948-023918e7eaf8" ThisKey="MASANPHAM" OtherKey="MASANPHAM" Type="CHITIETDDH" />
+      <Association Name="LOAISP_SANPHAM" ed:AssociationGuid="42661e6d-aeb6-4344-9f03-b9a19617fac2" Member="LOAISP" ed:Guid="62e2c3d9-a28e-4940-add5-04a674ddc43f" ThisKey="MALOAISP" OtherKey="MALOAISP" Type="LOAISP" DeleteRule="NO ACTION" IsForeignKey="true" />
+      <Association Name="SANPHAM_TAG" ed:AssociationGuid="9dc65917-1d54-4765-a276-90b87d71a688" Member="TAGs" ed:Guid="726188ec-c813-49e4-bbbd-736b9709263a" ThisKey="MASANPHAM" OtherKey="MATAG" Type="TAG" LinkTableName="ADMIN.CHITIETTAG" LinkThisKey="MA_SANPHAM" LinkOtherKey="MA_TAG" Cardinality="Many" />
+    </Type>
+  </Table>
+  <Table Name="ADMIN.TAG" Member="TAGs">
+    <Type Name="TAG" ed:Guid="7d3bb4e6-89af-4061-a993-e7330e8d01f5">
+      <Column Name="MA_TAG" Member="MATAG" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="e3520397-0c0e-4a10-8783-c61c9cffc779" />
+      <Column Name="TENTAG" Type="System.String" DbType="NVARCHAR2(20) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="20" Unicode="true" ed:ValidateMaxLength="20" ed:ValidateRequired="false" ed:Guid="2623f631-a817-47a2-b577-3d0cfa6c1ce0" />
+      <Association Name="SANPHAM_TAG" ed:AssociationGuid="9dc65917-1d54-4765-a276-90b87d71a688" Member="SANPHAMs" ed:Guid="19929e1b-ba0a-4e84-9a42-478cec3c1f9d" ThisKey="MATAG" OtherKey="MASANPHAM" Type="SANPHAM" LinkTableName="ADMIN.CHITIETTAG" LinkThisKey="MA_TAG" LinkOtherKey="MA_SANPHAM" IsForeignKey="true" Cardinality="Many" />
+    </Type>
+  </Table>
+  <Table Name="ADMIN.THONGTINWEBSITE" Member="THONGTINWEBSITEs">
+    <Type Name="THONGTINWEBSITE" ed:Guid="3e04b4ef-2881-47a2-b198-b3791ec708ad">
+      <Column Name="MA_THONGTIN" Member="MATHONGTIN" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="4b0d6914-6e0f-4b45-b5f8-ded39f1ac9c7" />
+      <Column Name="LOGO" Type="System.String" DbType="VARCHAR2(100 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="d2a55a87-2ff4-4c43-b4d1-ef278218ee70" />
+      <Column Name="HOTLINE" Type="System.String" DbType="VARCHAR2(15 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="15" ed:ValidateMaxLength="15" ed:ValidateRequired="false" ed:Guid="e09ee71e-3104-4d27-92c6-580799ea3938" />
+      <Column Name="FACEBOOK" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="27d79b45-0671-4502-ac25-8b5a613e0862" />
+      <Column Name="LINK_FACEBOOK" Member="LINKFACEBOOK" Type="System.String" DbType="VARCHAR2(100 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="7087e6c5-7409-4529-a7f4-d8f857da0321" />
+      <Column Name="THOIGIANMOCUA" Type="System.String" DbType="VARCHAR2(100 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="e716867d-8533-417e-968b-35cfdf9b6729" />
+      <Column Name="DIACHI" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="bb2d5d37-2fd6-44a3-a69a-34cb324b061e" />
+      <Column Name="EMAIL" Type="System.String" DbType="VARCHAR2(30 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="30" ed:ValidateMaxLength="30" ed:ValidateRequired="false" ed:Guid="459adffe-011f-4390-aced-4841ec193858" />
+      <Column Name="TENWEBSITE" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="c914147c-4bd0-43ab-9b5a-634a47a50929" />
+      <Column Name="MOTATRANGWEB" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="199901b6-63c0-4189-ba1d-688e1f6fa12c" />
+    </Type>
+  </Table>
+  <Table Name="ADMIN.TRANGTHAIDDH" Member="TRANGTHAIDDHs">
+    <Type Name="TRANGTHAIDDH" ed:Guid="a68ed85e-b8b7-4330-81e7-7936ef634215">
+      <Column Name="MA_TTDDH" Member="MATTDDH" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="a99d4853-e311-4fb1-830d-64515d84b54e" />
+      <Column Name="TENTRANGTHAI" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="92ec133e-98e7-4407-8cf7-0b590c9882f5" />
+      <Association Name="TRANGTHAIDDH_DONDATHANG" ed:AssociationGuid="6af21b62-7881-49da-92b6-e78d6de1c6d3" Member="DONDATHANGs" ed:Guid="7fbb5093-eee7-4d2b-8dd0-60235b46b488" ThisKey="MATTDDH" OtherKey="MATTDDH" Type="DONDATHANG" />
+    </Type>
+  </Table>
+  <Table Name="ADMIN.TRANGTHAIHD" Member="TRANGTHAIHDs">
+    <Type Name="TRANGTHAIHD" ed:Guid="1e1186d0-1a78-40a5-86ae-54731789a417">
+      <Column Name="MA_TTHD" Member="MATTHD" Type="System.Decimal" DbType="NUMBER NOT NULL" IsPrimaryKey="true" CanBeNull="false" UpdateCheck="Always" ed:ValidateRequired="true" ed:Guid="c72cfa31-712b-4e37-b3af-7d755a7311ec" />
+      <Column Name="TENTTHD" Type="System.String" DbType="NVARCHAR2(100) NULL" CanBeNull="true" UpdateCheck="Never" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="b4dd2f44-f014-4db0-a328-b4ab6b1ba09e" />
+      <Association Name="TRANGTHAIHD_HOADON" ed:AssociationGuid="c0a1dcee-0cb6-4546-920f-b54f4914acd6" Member="HOADONs" ed:Guid="cd0bd1f2-98e4-487d-9588-0649b0ce55d0" ThisKey="MATTHD" OtherKey="MATTHD" Type="HOADON" />
+    </Type>
+  </Table>
+  <Type Name="PROCLAYSPLOAITRUYENVAOResult" ed:Guid="fc909e37-af05-4d86-a24e-216423abce80">
+    <Column Name="MA_SANPHAM" Member="MASANPHAM" Type="System.Decimal" DbType="NUMBER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="3bcb46a1-2dd7-422c-89e4-c1fb3fec6fc3" />
+    <Column Name="TENSANPHAM" Type="System.String" DbType="NVARCHAR2(2000) NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="95ed709e-5b0c-4fe9-a4e2-45261472d2de" />
+  </Type>
+  <Type Name="PROCDS6SPBANCHAYResult" ed:Guid="dda5fc67-93b1-47bc-91d3-0e9712090e52">
+    <Column Name="MA_SANPHAM" Member="MASANPHAM" Type="System.Decimal" DbType="NUMBER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="f9b3f58d-5303-499c-b6bc-1888c1b6a517" />
+    <Column Name="TENSANPHAM" Type="System.String" DbType="NVARCHAR2(2000) NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="ff7583ff-fdc5-4574-919f-4a96f5b7f0de" />
+    <Column Name="TENLOAI" Type="System.String" DbType="NVARCHAR2(2000) NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="8f369568-2f51-4a28-a8fd-aa03841d6e68" />
+    <Column Name="ANHSANPHAM" Type="System.String" DbType="VARCHAR2(4000 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="8306e9b5-5b21-4064-857d-0b42b42a876e" />
+    <Column Name="SOLUONG" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="59fe4bb7-6664-4c62-91e6-29e62a45d5bc" />
+    <Column Name="THANHTIEN" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="5e03ef80-4aae-446e-aa41-01ff94ef6e63" />
+  </Type>
+  <Type Name="ProcLaySPLoaiTruyenVaoResult" ed:Guid="3019df30-4a91-422b-8b87-47e95c54ea4c">
+    <Column Name="MA_SANPHAM" Member="MASANPHAM" Type="System.Decimal" DbType="NUMBER NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="cfcdb660-4bc8-4d8e-9c4c-e549bcdbc40a" />
+    <Column Name="TENSANPHAM" Type="System.String" DbType="NVARCHAR2(2000) NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="fb65c45a-555d-47ed-8110-16c49f06afb3" />
+    <Column Name="GIABAN" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="42fc4d19-6817-4f8c-8c15-0dd0085c6599" />
+    <Column Name="GIAKM" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="988df07b-9205-4ae4-8fec-15180c6faa29" />
+    <Column Name="ANHSANPHAM" Type="System.String" DbType="VARCHAR2(4000 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="fb29fc72-94f9-478e-afae-917410af9eeb" />
+    <Column Name="TRANGTHAIKM" Type="System.String" DbType="VARCHAR2(4000 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="48e30f99-e48a-4af9-a264-9f0e94f23fa5" />
+    <Column Name="URL" Type="System.String" DbType="VARCHAR2(4000 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="d7b19fac-2389-4c72-9c15-82ed16707360" />
+    <Column Name="TRANGTHAIBAN" Type="System.String" DbType="VARCHAR2(4000 CHAR) NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="83ecc390-926a-4cfa-be82-ecf22e11cd3d" />
+  </Type>
+  <Type Name="PROCTHONGKELOAIResult" ed:Guid="88f6c006-00f8-409b-b44a-f32247c3e1a3">
+    <Column Name="TENLOAI" Type="System.String" DbType="NVARCHAR2(2000) NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="0212fdf3-d5af-4e41-b3b5-413e6158aa62" />
+    <Column Name="&quot;COUNT(ADMIN.SANPHAM.MA_SANPHAM)&quot;" Member="COUNTADMINSANPHAMMASANPHAM" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="f49f3a7d-4cb9-4fa6-a82a-2b66347ff303" />
+  </Type>
+  <Type Name="PROCTKHDNVResult" ed:Guid="0e61a48a-e53a-44ed-b1ec-9ffbd2547099">
+    <Column Name="&quot;COUNT(ADMIN.DONDATHANG.MA_DONDATHANG)&quot;" Member="COUNTADMINDONDATHANGMADONDATHANG" Type="System.Decimal" DbType="NUMBER NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="c6edb0cd-2cc1-4dd1-b364-db2be6658d55" />
+    <Column Name="TENNHANVIEN" Type="System.String" DbType="NVARCHAR2(2000) NULL" CanBeNull="true" UpdateCheck="Never" ed:ValidateRequired="false" ed:Guid="180825c2-6dc0-4c05-9865-68d8110cc78e" />
+  </Type>
+  <Function Name="ADMIN.PROC_DSSP_KHONGBAN" Method="PROCDSSPKHONGBAN" ed:Guid="65bdf718-fa62-447d-bd3a-3b197a49d223">
+    <Parameter Name="X" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID5" />
+  </Function>
+  <Function Name="ADMIN.PROC_KHOIPHUCSP" Method="PROCKHOIPHUCSP" ed:Guid="ce618f0a-fec9-4b78-b2d2-c57a9912e1c9">
+    <Parameter Name="MA" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.PROC_LAYSP_LOAITRUYENVAO" Method="PROCLAYSPLOAITRUYENVAO" ed:Guid="1c30ba8c-d79d-4f2a-9f93-3a3145f4040b">
+    <Parameter Name="X" Type="System.String" DbType="VARCHAR2(4000 CHAR)" />
+    <ElementType Type="PROCLAYSPLOAITRUYENVAOResult" />
+  </Function>
+  <Function Name="ADMIN.PROC_DS6SP_BANCHAY" Method="PROCDS6SPBANCHAY" ed:Guid="4a6e620f-439f-4726-b70d-0e414cafb760">
+    <ElementType Type="PROCDS6SPBANCHAYResult" />
+  </Function>
+  <Function Name="ADMIN.PROC_DSSP_LOAI" Method="PROCDSSPLOAI" ed:Guid="e81bf80f-4058-4806-9973-86cfc00c0b2a">
+    <Parameter Name="X" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID5" />
+  </Function>
+  <Function Name="ADMIN.PROC_XOASP" Method="PROCXOASP" ed:Guid="b451b5e6-1e17-43a2-8634-198c79214e8a">
+    <Parameter Name="MA" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.&quot;Proc_LaySP_LoaiTruyenVao&quot;" Method="ProcLaySPLoaiTruyenVao" ed:Guid="fdb2c726-a4cc-454f-b0ee-7753fcb41e49">
+    <Parameter Name="X" Type="System.String" DbType="VARCHAR2(4000 CHAR)" />
+    <ElementType Type="ProcLaySPLoaiTruyenVaoResult" />
+  </Function>
+  <Function Name="ADMIN.DS_5DONHANG_MOI" Method="DS5DONHANGMOI" IsComposable="true" ed:Guid="50c698d5-9639-4633-8ff8-4493cacfd49a">
+    <Return Type="System.Object" />
+  </Function>
+  <Function Name="ADMIN.NHAP_LOAISP" Method="NHAPLOAISP" IsComposable="true" ed:Guid="b432212d-0432-4fc1-b411-109c709fc6a5">
+    <Parameter Name="NAME" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.FN_CONVERT_TO_VN" Method="FNCONVERTTOVN" IsComposable="true" ed:Guid="0e0eeddd-8144-4545-b924-bcdea7ddfaa9">
+    <Parameter Name="STRINPUT" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="ADMIN.SP_THEO_URL" Method="SPTHEOURL" IsComposable="true" ed:Guid="ed2b9a33-7d91-4b44-bdc2-3b6007cad4c2">
+    <Parameter Name="URLPUT" Type="System.String" DbType="VARCHAR2(4000 CHAR)" />
+    <Return Type="System.Object" />
+  </Function>
+  <Function Name="ADMIN.GET_YEAR" Method="GETYEAR" IsComposable="true" ed:Guid="e93ec1b3-3bea-427b-9967-1558c6b20419">
+    <Parameter Name="DATEPUT" Type="System.DateTime" DbType="DATE" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.GET_MONTH" Method="GETMONTH" IsComposable="true" ed:Guid="e9caae31-eca1-449f-a046-5bce29078c4b">
+    <Parameter Name="DATEPUT" Type="System.DateTime" DbType="DATE" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.GET_DAY" Method="GETDAY" IsComposable="true" ed:Guid="77173e58-5cbe-4cda-bfa5-269114ff2034">
+    <Parameter Name="DATEPUT" Type="System.DateTime" DbType="DATE" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.GET_SL_DH" Method="GETSLDH" IsComposable="true" ed:Guid="b4eccab9-bf54-46e4-b805-baaf643b709e">
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.SUA_LOAISP" Method="SUALOAISP" IsComposable="true" ed:Guid="7624ac4b-f8fd-4a78-8f5d-d50b786f86d0">
+    <Parameter Name="IDSP" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="NAME" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.GET_TTG_DDH" Method="GETTTGDDH" IsComposable="true" ed:Guid="928dcd23-33e4-47b6-9911-4747670f4ff8">
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.GET_SL_SP" Method="GETSLSP" IsComposable="true" ed:Guid="30aa334d-f336-4f0d-ab76-6ed37d672b88">
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.GET_AGE" Method="GETAGE" IsComposable="true" ed:Guid="87fcdcc1-0b14-4fcd-b294-6bb9b6a16eb1">
+    <Parameter Name="DATEPUT" Type="System.DateTime" DbType="DATE" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.GET_KH_ORDER" Method="GETKHORDER" IsComposable="true" ed:Guid="9ddf8f32-edd1-484e-9c79-de687a0b6373">
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.GET_PRICE" Method="GETPRICE" IsComposable="true" ed:Guid="c8dc5eb6-ac90-4f8f-b8d9-679db0e95088">
+    <Parameter Name="ID" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.SUA_SANPHAM" Method="SUASANPHAM" IsComposable="true" ed:Guid="739d683b-342e-41bf-a3c4-080d524ef899">
+    <Parameter Name="MASP" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="MALOAI" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="NAME" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Parameter Name="GIABAN" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="GIAKM" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="MOTA" Type="System.String" DbType="NCLOB" />
+    <Parameter Name="ANH" Type="System.String" DbType="VARCHAR2(4000 CHAR)" />
+    <Parameter Name="THKM" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THHOT" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THTUAN" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THBAN" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.NHAP_SANPHAM" Method="NHAPSANPHAM" IsComposable="true" ed:Guid="ff995ce9-2453-41d0-988e-62eda7d33cac">
+    <Parameter Name="MALOAI" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="NAME" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Parameter Name="GIABAN" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="GIAKM" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="MOTA" Type="System.String" DbType="NCLOB" />
+    <Parameter Name="ANH" Type="System.String" DbType="VARCHAR2(4000 CHAR)" />
+    <Parameter Name="THKM" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THHOT" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THTUAN" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THBAN" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PROC_CHITIET_DDH" Method="PROCCHITIETDDH" ed:Guid="9b470661-cdb2-4c52-8dde-bc053cfda484">
+    <Parameter Name="X" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID2" />
+  </Function>
+  <Function Name="ADMIN.PROC_DS_ITEM_DH" Method="PROCDSITEMDH" ed:Guid="2812b30d-6274-4704-80a9-ba70b8c44c4b">
+    <Parameter Name="X" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="ADMIN.PROC_SETDDH" Method="PROCSETDDH" ed:Guid="ca93b112-0d23-4b52-9637-d9de8ad1ec5e">
+    <Parameter Name="MATT" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="MADH" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.PROC_DANGNHAP_NV" Method="PROCDANGNHAPNV" ed:Guid="67c9a204-08d4-4a55-9616-20b4a76972be">
+    <Parameter Name="TENDN" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Parameter Name="PASS" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <ElementType IdRef="ID4" />
+  </Function>
+  <Function Name="ADMIN.XUAT_HOADON" Method="XUATHOADON" IsComposable="true" ed:Guid="06bf33dd-6249-4a22-bba5-fef579c4970b">
+    <Parameter Name="MADDH" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="MANV" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="NGAYGIAO" Type="System.DateTime" DbType="DATE" />
+    <Parameter Name="GHICHU" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Parameter Name="MSOTHUE" Type="System.String" DbType="VARCHAR2(4000 CHAR)" />
+    <Parameter Name="TENCT" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Parameter Name="DIACHI" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PROC_DS_HOADON" Method="PROCDSHOADON" ed:Guid="125d5007-16cd-46c7-b928-ad5c88e63444">
+    <Parameter Name="X" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID3" />
+  </Function>
+  <Function Name="ADMIN.PROC_DS_HOADON_NHANVIEN" Method="PROCDSHOADONNHANVIEN" ed:Guid="f7b33849-ffb8-4c0f-92d6-c88dcaec98cb">
+    <Parameter Name="Y" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID3" />
+  </Function>
+  <Function Name="ADMIN.PROC_THONGKE_LOAI" Method="PROCTHONGKELOAI" ed:Guid="d12ea34c-852d-452a-85df-5f2509e7dc90">
+    <ElementType Type="PROCTHONGKELOAIResult" />
+  </Function>
+  <Function Name="ADMIN.GET_SLHANGBAN" Method="GETSLHANGBAN" IsComposable="true" ed:Guid="1e314f62-a0fc-46f8-9745-8eb5e6243422">
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PROC_TK_HD_NV" Method="PROCTKHDNV" ed:Guid="ea930fd7-837b-4786-ae1b-aec517c04033">
+    <ElementType Type="PROCTKHDNVResult" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_SANPHAM" Method="PACKAGEPROCSANPHAM" ed:Guid="8a94fcdc-838c-4367-8867-d2f3ed6d93d2">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_NV" Method="PACKAGEPROCNV" ed:Guid="c85b08c5-6007-4d2b-8255-10d4b02f9ef7">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.PROC_TIM_SP" Method="PROCTIMSP" ed:Guid="f3f690d2-eab4-42bd-9b50-8b92a31c83d3">
+    <Parameter Name="X" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <ElementType IdRef="ID5" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_HD_DDH" Method="PACKAGEPROCHDDDH" ed:Guid="433a469e-5bbe-4941-bdc0-c2f4ab9d0827">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_CHUNG" Method="PACKAGEFCCHUNG" ed:Guid="185b2234-f1a9-4394-a346-3cba02a6c7b6">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_SANPHAM" Method="PACKAGEFCSANPHAM" ed:Guid="b1df79cd-47b7-4a37-a5b5-2f356fa48ca2">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_DDH_HD" Method="PACKAGEFCDDHHD" ed:Guid="9bde6724-6ca7-4bfd-b104-653e766c5c52">
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_SANPHAM.PROC_DSSP_KHONGBAN" Method="PROCDSSPKHONGBAN1" ed:Guid="d52689d3-f93f-4035-b78e-091cccfb1173">
+    <Parameter Name="X" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID5" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_SANPHAM.PROC_DSSP_LOAI" Method="PROCDSSPLOAI1" ed:Guid="7b479971-e1f2-4cc7-b722-749634aae323">
+    <Parameter Name="X" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID5" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_SANPHAM.PROC_KHOIPHUCSP" Method="PROCKHOIPHUCSP1" ed:Guid="0e7ffc14-fd6b-4b16-bf48-17c055272b32">
+    <Parameter Name="MA" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_SANPHAM.PROC_DS6SP_BANCHAY" Method="PROCDS6SPBANCHAY1" ed:Guid="18ff163d-c6b7-46b5-bf12-4d4e14c96fcd">
+    <ElementType Type="PROCDS6SPBANCHAYResult" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_SANPHAM.PROC_LAYSP_LOAITRUYENVAO" Method="PROCLAYSPLOAITRUYENVAO1" ed:Guid="875902d8-4dc7-4fc2-9fc1-8cf06763fe65">
+    <Parameter Name="X" Type="System.String" DbType="VARCHAR2(4000 CHAR)" />
+    <ElementType Type="PROCLAYSPLOAITRUYENVAOResult" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_SANPHAM.PROC_XOASP" Method="PROCXOASP1" ed:Guid="00b6e62d-4bf7-488d-927c-32c150d9dcd7">
+    <Parameter Name="MA" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_NV.PROC_DANGNHAP_NV" Method="PROCDANGNHAPNV1" ed:Guid="1c9a4edf-e03c-41a1-898d-d7c0dcece8f1">
+    <Parameter Name="TENDN" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Parameter Name="PASS" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <ElementType IdRef="ID4" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_NV.PROC_DS_HOADON_NHANVIEN" Method="PROCDSHOADONNHANVIEN1" ed:Guid="4a1f346a-f9ab-4ac1-a434-ea74fe102b29">
+    <Parameter Name="Y" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID3" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_HD_DDH.PROC_SETDDH" Method="PROCSETDDH1" ed:Guid="323efffe-415c-4406-9202-40c2ae326472">
+    <Parameter Name="MATT" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="MADH" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_HD_DDH.PROC_DS_HOADON" Method="PROCDSHOADON1" ed:Guid="b8968c99-b474-4db7-8eee-a9e5b6f126fd">
+    <Parameter Name="X" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID3" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_HD_DDH.PROC_DS_ITEM_DH" Method="PROCDSITEMDH1" ed:Guid="a300c47e-f848-4cdd-9acf-efd6a27b2681">
+    <Parameter Name="X" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_PROC_HD_DDH.PROC_CHITIET_DDH" Method="PROCCHITIETDDH1" ed:Guid="0eeef6a2-9457-4e27-9067-f1a00237e176">
+    <Parameter Name="X" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID2" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_SANPHAM.SP_THEO_URL" Method="SPTHEOURL1" IsComposable="true" ed:Guid="bd64a8ce-1002-44c9-996b-66c54a1d4ece">
+    <Parameter Name="URLPUT" Type="System.String" DbType="VARCHAR2(4000 CHAR)" />
+    <Return Type="System.Object" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_SANPHAM.GET_PRICE" Method="GETPRICE1" IsComposable="true" ed:Guid="e8e4a0c7-dcaf-4450-b4c3-340f28287cd2">
+    <Parameter Name="ID" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_SANPHAM.GET_SL_SP" Method="GETSLSP1" IsComposable="true" ed:Guid="a327c19e-9c90-433b-b4a9-90653e7560fe">
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_SANPHAM.NHAP_LOAISP" Method="NHAPLOAISP1" IsComposable="true" ed:Guid="b2d3f1fa-2722-4217-86ff-faec0ce98b82">
+    <Parameter Name="NAME" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_SANPHAM.DS_5DONHANG_MOI" Method="DS5DONHANGMOI1" IsComposable="true" ed:Guid="35d19181-66a6-48b6-a08d-4bd918c445aa">
+    <Return Type="System.Object" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_SANPHAM.NHAP_SANPHAM" Method="NHAPSANPHAM1" IsComposable="true" ed:Guid="d57462e9-3c33-41a0-ae64-26e8dd1261ef">
+    <Parameter Name="MALOAI" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="NAME" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Parameter Name="GIABAN" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="GIAKM" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="MOTA" Type="System.String" DbType="NCLOB" />
+    <Parameter Name="ANH" Type="System.String" DbType="VARCHAR2(4000 CHAR)" />
+    <Parameter Name="THKM" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THHOT" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THTUAN" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THBAN" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_SANPHAM.SUA_LOAISP" Method="SUALOAISP1" IsComposable="true" ed:Guid="94f31425-7fd5-4d13-97f5-70ab7694dea2">
+    <Parameter Name="IDSP" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="NAME" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_SANPHAM.SUA_SANPHAM" Method="SUASANPHAM1" IsComposable="true" ed:Guid="cadbbdee-5b38-4079-84e6-426ef41826e8">
+    <Parameter Name="MASP" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="MALOAI" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="NAME" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Parameter Name="GIABAN" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="GIAKM" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="MOTA" Type="System.String" DbType="NCLOB" />
+    <Parameter Name="ANH" Type="System.String" DbType="VARCHAR2(4000 CHAR)" />
+    <Parameter Name="THKM" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THHOT" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THTUAN" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Parameter Name="THBAN" Type="System.String" DbType="VARCHAR2(1 CHAR)" FixedLength="true" MaxLength="1" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_DDH_HD.GET_SL_DH" Method="GETSLDH1" IsComposable="true" ed:Guid="b90e2c40-cbdb-44aa-8056-ee137a1437e7">
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_DDH_HD.GET_TTG_DDH" Method="GETTTGDDH1" IsComposable="true" ed:Guid="1560cf6a-7e84-4678-9449-85d6a2609f07">
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_DDH_HD.XUAT_HOADON" Method="XUATHOADON1" IsComposable="true" ed:Guid="dce7c826-3e45-4b08-bf0c-cce0d4d5e8f0">
+    <Parameter Name="MADDH" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="MANV" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <Parameter Name="NGAYGIAO" Type="System.DateTime" DbType="DATE" />
+    <Parameter Name="GHICHU" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Parameter Name="MSOTHUE" Type="System.String" DbType="VARCHAR2(4000 CHAR)" />
+    <Parameter Name="TENCT" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Parameter Name="DIACHI" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_CHUNG.GET_MONTH" Method="GETMONTH1" IsComposable="true" ed:Guid="bb25aeb7-a1ec-47cd-bcb8-f2b74ed1c947">
+    <Parameter Name="DATEPUT" Type="System.DateTime" DbType="DATE" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_CHUNG.GET_YEAR" Method="GETYEAR1" IsComposable="true" ed:Guid="e54ab86d-3007-4fc6-ad50-60d722bd9d31">
+    <Parameter Name="DATEPUT" Type="System.DateTime" DbType="DATE" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_CHUNG.GET_AGE" Method="GETAGE1" IsComposable="true" ed:Guid="4b1c3a8e-220e-4cf8-ad17-61ecc40ef5e0">
+    <Parameter Name="DATEPUT" Type="System.DateTime" DbType="DATE" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_CHUNG.FN_CONVERT_TO_VN" Method="FNCONVERTTOVN1" IsComposable="true" ed:Guid="a984d251-4cb2-4991-b22e-edc64349611f">
+    <Parameter Name="STRINPUT" Type="System.String" DbType="NVARCHAR2(2000)" />
+    <Return Type="System.String" />
+  </Function>
+  <Function Name="ADMIN.PACKAGE_FC_CHUNG.GET_DAY" Method="GETDAY1" IsComposable="true" ed:Guid="9fa98206-8e64-4ff5-a3f9-eb01822de7dc">
+    <Parameter Name="DATEPUT" Type="System.DateTime" DbType="DATE" />
+    <Return Type="System.Decimal" />
+  </Function>
+  <Function Name="ADMIN.PROC_TIM_DDH" Method="PROCTIMDDH" ed:Guid="6eea77bb-75fe-4a0e-8c03-d034ab6d2031">
+    <Parameter Name="X" Type="System.Decimal" DbType="NUMBER" FixedLength="true" MaxLength="22" />
+    <ElementType IdRef="ID2" />
+  </Function>
+</Database>

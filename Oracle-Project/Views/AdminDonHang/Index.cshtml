@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ADMINContext.DONDATHANG>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@Html.Action("menudonhang", "AdminDonHang")
+
+<table class="w3-table-all w3-hoverable">
+    <thead>
+        <tr class="w3-light-grey">
+            <th>Mã đơn hàng</th>
+            <th>NV duyệt</th>
+            <th>Người đặt hàng</th>
+            <th>Tình trạng xác nhận</th>
+            <th>Hình thức giao hàng</th>
+            <th>Tổng trị giá</th>
+            <th>Ngày tạo</th>
+            <td></td>
+        </tr>
+    </thead>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MADONDATHANG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NHANVIEN.TENNHANVIEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KHACHHANG.TENKHACHHANG)
+        </td>
+        <td>
+           @{ViewData["TTHD"] = Html.Action("LayList", "AdminDonHang", new { id = item.MATTDDH })}
+               @Html.DropDownListFor(modelItem => item.MATTDDH, (SelectList)ViewData["TTHD"])
+            @Html.DisplayFor(modelItem => item.TRANGTHAIDDH.TENTRANGTHAI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HTGIAOHANG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TONGTG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYTAODDH)
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Details", "Details", new { id=item.MADONDATHANG }) |
+            @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+    </tr>
+}
+    </table>

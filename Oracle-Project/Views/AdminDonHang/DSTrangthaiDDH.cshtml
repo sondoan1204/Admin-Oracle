@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ADMINContext.TRANGTHAIDDH>
+
+@foreach (var item in Model)
+{
+    if (item.MATTDDH == ViewBag.MaTT)
+    {
+        @Html.ActionLink(item.TENTRANGTHAI, "SetTTDH", "AdminDonHang", new { idTH = item.MATTDDH, id = ViewBag.MaDDH }, new { @class = "w3-button w3-teal w3-round-xxlarge w3-disabled" })
+    }
+    else
+    {
+        @Html.ActionLink(item.TENTRANGTHAI, "SetTTDH", "AdminDonHang", new { idTH = item.MATTDDH, id = ViewBag.MaDDH }, new { @class = "w3-button w3-teal w3-round-xxlarge" })
+    }
+}

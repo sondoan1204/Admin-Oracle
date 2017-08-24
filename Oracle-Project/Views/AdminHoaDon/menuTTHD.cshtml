@@ -1,0 +1,7 @@
+﻿@model IEnumerable<ADMINContext.TRANGTHAIHD>
+@foreach (var item in Model)
+{
+
+    @Html.ActionLink(item.TENTTHD, "DSHoaDonTheoTrangThai", "AdminHoaDon", new { id = item.MATTHD }, new { @class = "w3-bar-item w3-button" })
+
+}

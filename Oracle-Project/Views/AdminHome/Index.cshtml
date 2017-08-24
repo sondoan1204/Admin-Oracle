@@ -1,0 +1,275 @@
+﻿@using System.Globalization;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Header -->
+<header class="w3-container" style="padding-top:22px">
+    <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+</header>
+
+<script src="~/Content/chart/jquery-2.1.1.min.js"></script>
+<script src="~/Content/chart/canvasjs.min.js"></script>
+<script src="~/Content/chart/excanvas.js"></script>
+<script src="~/Content/chart/highcharts.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var dataPoints = [];
+        $.getJSON("../AdminHome/ThongKeLoai", function (data) {
+            for (var i = 0; i <= data.length -1; i++) {
+                dataPoints.push({ label: data[i].TENLOAI, y: parseInt(data[i].COUNTADMINSANPHAMMASANPHAM) });
+            }
+            var chart = new CanvasJS.Chart("myChart", {
+                theme: "theme2",//theme1
+                title: {    
+                    
+                },
+                data: [
+                {
+                    // Change type to "bar", "splineArea", "area", "spline", "pie",etc.
+                    type: "pie",
+                    dataPoints: dataPoints
+                }
+                ]
+            });
+
+            chart.render();
+        });
+
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var dataPoints = [];
+        $.getJSON("../AdminHome/ThongKeDH_NV", function (data) {
+            for (var i = 0; i <= data.length -1; i++) {
+                dataPoints.push({ label: data[i].TENNHANVIEN, y: parseInt(data[i].COUNTADMINDONDATHANGMADONDATHANG) });
+            }
+            var chart = new CanvasJS.Chart("myChartNV", {
+                theme: "theme2",//theme1
+                title: {
+                                   },
+                data: [
+                {
+                    // Change type to "bar", "splineArea", "area", "spline", "pie",etc.
+                    type: "column",
+                    dataPoints: dataPoints
+                }
+                ]
+            });
+
+            chart.render();
+        });
+
+    });
+</script>
+<div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+        <div class="w3-container w3-brown w3-padding-16">
+            <div class="w3-left"><i class="fa fa-money w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                @{
+                    var TTG = (decimal)ViewBag.TTG;
+                    CultureInfo ci = new CultureInfo("vi-VN");
+                }
+                <h3>@TTG.ToString("C", ci)</h3>
+            </div>
+            <div class="w3-clear"></div>
+            <h4>Tổng thu nhập</h4>
+        </div>
+    </div>
+    <div class="w3-quarter">
+        <div class="w3-container w3-red w3-padding-16">
+            <div class="w3-left"><i class="fa fa-male w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                <h3>@ViewBag.KH</h3>
+            </div>
+            <div class="w3-clear"></div>
+            <h4>Số khách orders</h4>
+        </div>
+    </div>
+    <div class="w3-quarter">
+        <div class="w3-container w3-green w3-padding-16">
+            <div class="w3-left"><i class="fa fa-signal w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                <h3>2.3</h3>
+            </div>
+            <div class="w3-clear"></div>
+            <h4>Lines per order</h4>
+        </div>
+    </div>
+    <div class="w3-quarter">
+        <div class="w3-container w3-gray w3-text-white w3-padding-16">
+            <div class="w3-left"><i class="fa fa-tasks w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                <h3>50</h3>
+            </div>
+            <div class="w3-clear"></div>
+            <h4>Average order value</h4>
+        </div>
+    </div>
+</div>
+
+<div class="w3-row-padding w3-margin-bottom">
+    <div class="w3-quarter">
+        <div class="w3-container w3-black w3-padding-16">
+            <div class="w3-left"><i class="fa fa-bar-chart w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                <h3>@ViewBag.DTKH.ToString("C", ci)</h3>
+            </div>
+            <div class="w3-clear"></div>
+            <h4>Doanh thu TB/Khách</h4>
+        </div>
+    </div>
+    <div class="w3-quarter">
+        <div class="w3-container w3-blue w3-padding-16">
+            <div class="w3-left"><i class="fa fa-eye w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                <h3>@ViewBag.SLHANGBAN</h3>
+            </div>
+            <div class="w3-clear"></div>
+            <h4>Tổng sản phẩm bán ra</h4>
+        </div>
+    </div>
+    <div class="w3-quarter">
+        <div class="w3-container w3-teal w3-padding-16">
+            <div class="w3-left"><i class="fa fa-shopping-cart w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                <h3>@ViewBag.SLDH</h3>
+            </div>
+            <div class="w3-clear"></div>
+            <h4>Tổng hoá đơn</h4>
+        </div>
+    </div>
+    <div class="w3-quarter">
+        <div class="w3-container w3-orange w3-text-white w3-padding-16">
+            <div class="w3-left"><i class="fa fa-barcode w3-xxxlarge"></i></div>
+            <div class="w3-right">
+                <h3>@ViewBag.SLSP</h3>
+            </div>
+            <div class="w3-clear"></div>
+            <h4>Tổng hàng</h4>
+        </div>
+    </div>
+</div>
+
+<div class="w3-panel">
+    <div class="w3-row-padding" style="margin:0 -16px">
+        <div class="w3-third">
+            <div class="w3-card-4 w3-margin">
+                <div class="w3-display-container w3-text-black">
+                    <div id="myChart" style="height: 300px; width: 300px;"></div>
+                    <div class="w3-xlarge w3-display-bottomleft w3-padding">Sản phẩm theo loại</div>
+                    </div></div>
+                    @*<h5>Regions</h5>
+                    <img src="/w3images/region.jpg" style="width:100%" alt="Google Regional Map">*@
+                </div>
+                <div class="w3-twothird">
+                    @Html.Action("Ds5DonHang", "AdminHome")
+                </div>
+            </div>
+        </div>
+
+
+<hr>
+<div class="w3-container">
+    <h5>Số lượng đơn hàng của nhân viên</h5>
+    <div class="w3-card-4 w3-margin">
+        <div class="w3-display-container w3-text-white">
+            <div id="myChartNV" style="height: 500px; width: 1000px;"></div>
+        </div>
+    </div>
+    @*<p>New Visitors</p>
+    <div class="w3-grey">
+        <div class="w3-container w3-center w3-padding w3-green" style="width:25%">+25%</div>
+    </div>
+
+    <p>New Users</p>
+    <div class="w3-grey">
+        <div class="w3-container w3-center w3-padding w3-orange" style="width:50%">50%</div>
+    </div>
+
+    <p>Bounce Rate</p>
+    <div class="w3-grey">
+        <div class="w3-container w3-center w3-padding w3-red" style="width:75%">75%</div>
+    </div>*@
+</div>
+<hr>
+
+<div class="w3-container">
+    @Html.Action("Ds6BanChay","AdminHome")
+</div>
+<hr>
+<div class="w3-container">
+    <h5>Recent Users</h5>
+    <ul class="w3-ul w3-card-4 w3-white">
+        <li class="w3-padding-16">
+            <img src="/w3images/avatar2.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+            <span class="w3-xlarge">Mike</span><br>
+        </li>
+        <li class="w3-padding-16">
+            <img src="/w3images/avatar5.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+            <span class="w3-xlarge">Jill</span><br>
+        </li>
+        <li class="w3-padding-16">
+            <img src="/w3images/avatar6.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+            <span class="w3-xlarge">Jane</span><br>
+        </li>
+    </ul>
+</div>
+<hr>
+
+<div class="w3-container">
+    <h5>Recent Comments</h5>
+    <div class="w3-row">
+        <div class="w3-col m2 text-center">
+            <img class="w3-circle" src="/w3images/avatar3.png" style="width:96px;height:96px">
+        </div>
+        <div class="w3-col m10 w3-container">
+            <h4>John <span class="w3-opacity w3-medium">Sep 29, 2014, 9:12 PM</span></h4>
+            <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+        </div>
+    </div>
+
+    <div class="w3-row">
+        <div class="w3-col m2 text-center">
+            <img class="w3-circle" src="/w3images/avatar1.png" style="width:96px;height:96px">
+        </div>
+        <div class="w3-col m10 w3-container">
+            <h4>Bo <span class="w3-opacity w3-medium">Sep 28, 2014, 10:15 PM</span></h4>
+            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+        </div>
+    </div>
+</div>
+<br>
+<div class="w3-container w3-dark-grey w3-padding-32">
+    <div class="w3-row">
+        <div class="w3-container w3-third">
+            <h5 class="w3-bottombar w3-border-green">Demographic</h5>
+            <p>Language</p>
+            <p>Country</p>
+            <p>City</p>
+        </div>
+        <div class="w3-container w3-third">
+            <h5 class="w3-bottombar w3-border-red">System</h5>
+            <p>Browser</p>
+            <p>OS</p>
+            <p>More</p>
+        </div>
+        <div class="w3-container w3-third">
+            <h5 class="w3-bottombar w3-border-orange">Target</h5>
+            <p>Users</p>
+            <p>Active</p>
+            <p>Geo</p>
+            <p>Interests</p>
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer class="w3-container w3-padding-16 w3-light-grey">
+    <h4>FOOTER</h4>
+    <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+<!-- End page content -->

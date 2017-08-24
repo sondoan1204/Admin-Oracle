@@ -1,0 +1,14 @@
+﻿
+@using Newtonsoft.Json.Linq;
+<h5>Danh sách 5 đơn hàng mới nhất</h5>
+<table class="w3-table w3-striped w3-white">
+    @foreach (JArray item in ViewBag.dsDH)
+    {
+        <tr>
+            <td><i class="fa fa-user w3-text-blue w3-large"></i></td>
+            <td>@item[1].ToString()</td>
+            <td><i>@item[2].ToString()</i></td>
+            <td>@item[3].ToString()</td>
+        </tr>
+    }
+</table>

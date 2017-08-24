@@ -1,0 +1,71 @@
+﻿@model ADMINContext.DONDATHANG
+@using System.Globalization
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@Html.Action("menudonhang", "AdminDonHang")
+<h2 style="margin-left: 14px">Đơn hàng số @Model.MADONDATHANG @Html.ActionLink("Xuất hóa đơn", "XuatHoaDon", "AdminDonHang", new { iddh = Model.MADONDATHANG }, new { @class = "w3-button w3-teal w3-round-xxlarge" })</h2> 
+<div class="w3-cell-row">
+    <div class="w3-container w3-cell">
+        <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+            <p>
+              Ngày tạo đơn hàng: @Html.DisplayFor(model => model.NGAYTAODDH)
+            </p>
+        </div>
+        <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+            <p>Hình thức nhận hàng: @if (Model.HTGIAOHANG==1) { @Html.Raw("Giao hàng tận nơi") }else {@Html.Raw("Nhận hàng tại cửa hàng") }
+            </p>
+        </div>
+        <div class="w3-panel w3-pale-blue w3-leftbar w3-rightbar w3-border-blue">
+            <h4>Thông tin giao hàng</h4>
+            <p>@Html.DisplayFor(model => model.TENNGUOINHAN) / @Html.DisplayFor(model => model.SDTNGUOINHAN)</p>
+            <p>Địa chỉ nhận: @Html.DisplayFor(model => model.DIACHINGUOINHAN)</p>
+        </div>
+
+    </div>
+    <div class="w3-container w3-cell-middle">
+        <div class="w3-container">
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container w3-blue">
+                    <h1>@Html.DisplayFor(model => model.KHACHHANG.TENKHACHHANG)</h1>
+                </header>
+
+                <div class="w3-container">
+                    <p>@Html.DisplayFor(model => model.KHACHHANG.DIACHI)</p>
+                    <p>@Html.DisplayFor(model => model.KHACHHANG.DIENTHOAI)</p>
+                    <p>@Html.DisplayFor(model => model.KHACHHANG.TENDANGNHAPKH) / @Html.DisplayFor(model => model.KHACHHANG.EMAIL)</p>
+
+                </div>
+                <footer class="w3-container w3-blue">
+                    <h5>Nhân viên: @Html.DisplayFor(model => model.NHANVIEN.TENNHANVIEN)</h5>
+                </footer>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+
+<div class="w3-cell-row">
+    <div class="w3-panel w3-cell-middle">
+        <div style="margin-top: 4%;">
+            @Html.Action("DSTrangthaiDDH", "AdminDonHang", new { madonhang = Model.MADONDATHANG })
+        </div>
+    
+    </div>
+    <div class="w3-panel w3-cell w3-light-grey w3-right-align">
+        @{
+            var TTG = (decimal)Model.TONGTG;
+            CultureInfo ci = new CultureInfo("vi-VN");
+        }
+        <p style="font-size:40px;line-height:0.6em;opacity:0.2">Tổng trị giá</p>
+        <p class="w3-xlarge" style="margin-top:-30px">
+            <i>@TTG.ToString("C", ci)</i>
+        </p>
+    </div>
+</div>
+
+
+
+@Html.Action("DanhsachItemDH","AdminDonHang",new { id= Model.MADONDATHANG})
